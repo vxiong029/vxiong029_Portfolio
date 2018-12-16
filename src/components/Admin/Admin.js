@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import AdminList from './AdminList';
 
 class Admin extends Component {
   state = {
@@ -65,6 +66,7 @@ class Admin extends Component {
           </p>
           <input type="submit" value="Submit"></input>
         </form>
+        <AdminList />
       </div>
     );
   }

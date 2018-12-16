@@ -7,9 +7,9 @@ const router = express.Router();
 router.get('/', (req, res) => {
   console.log('get route hit');
   
-  const queryText = `SELECT "projects".name, "projects".description, 
+  const queryText = `SELECT "projects".id, "projects".name, "projects".description, 
                     "projects".thumbnail, "projects".website, "projects".github, 
-                    "projects".date_completed, "tags".name FROM "projects" 
+                    "projects".date_completed, "tags".category_name FROM "projects" 
                     LEFT OUTER JOIN "tags" ON "projects".tag_id = "tags".id
                     ORDER BY "projects".id ASC;`;
   pool.query(queryText)
@@ -89,15 +89,15 @@ router.post('/', (req, res) => {
 //     });
 // });
 
-// router.delete('/:id', (req, res) => {
-//   const queryText = 'DELETE FROM plant WHERE id=$1;';
-//   console.log('in server DELETE', req.params.id);
-//   pool.query(queryText, [req.params.id])
-//     .then(() => { res.sendStatus(200); })
-//     .catch((err) => {
-//       console.log('Error completing SELECT plant query', err);
-//       res.sendStatus(500);
-//     });
-// });
+router.delete('/:id', (req, res) => {
+  const queryText = 'DELETE FROM "projects" WHERE "projects".id=$1;';
+  console.log('in server DELETE', req.params.id);
+  pool.query(queryText, [req.params.id])
+    .then(() => { res.sendStatus(200); })
+    .catch((err) => {
+      console.log('Error completing SELECT project query', err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
