@@ -45,6 +45,21 @@ function* fetchProjects() {
 		console.log('fetchProjects error:', error);
 	}
 }
+// deleteProjects DELETE saga function
+function* deleteProjects(action) {
+	try{
+		// test trigger
+		console.log('deleteProjects triggered');
+		// make axios call to DB to DELETE project
+		yield call(axios.delete, `/project/${action.payload}`);
+		// dispatch to FETCH_PROJECTS
+		yield dispatch({
+			type: 'FETCH_PROJECTS'
+		})
+	} catch(error) {
+		console.log('deleteProjects error:', error);
+	}
+}
 
 // SAGA WATCHER
 function* rootSaga() {
@@ -54,8 +69,10 @@ function* rootSaga() {
 	// watching for FETCH_PROJECTS and sending to fetchProjects saga
 	yield takeEvery('FETCH_PROJECTS',
 		fetchProjects);
+	// watching for DELETE_PROJECT and sending to deleteProject saga
+	yield takeEvery('DELETE_PROJECTS', 
+		deleteProjects);
 }
-
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
