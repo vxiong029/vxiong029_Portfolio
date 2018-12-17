@@ -88,20 +88,20 @@ const projects = (state = [], action) => {
 	}
 }
 // Used to store the project tags (e.g. 'React', 'jQuery', 'Angular', 'Node.js')
-const tags = (state = [], action) => {
-	switch (action.type) {
-		case 'SET_TAGS':
-			return action.payload;
-		default:
-			return state;
-	}
-}
+// const tags = (state = [], action) => {
+// 	switch (action.type) {
+// 		case 'SET_TAGS':
+// 			return action.payload;
+// 		default:
+// 			return state;
+// 	}
+// }
 
 // Create one store that all components can use
 const storeInstance = createStore(
 	combineReducers({
 		projects,
-		tags,
+		// tags,
 	}),
 	// Add sagaMiddleware to our store
 	applyMiddleware(sagaMiddleware, logger),
