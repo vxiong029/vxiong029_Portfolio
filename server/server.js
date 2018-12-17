@@ -9,7 +9,7 @@ app.use(express.static('build'));
 
 /** ---------- ROUTES ---------- **/
 const projectRouter = require('./routes/projectRouter');
-app.use('/project', projectRouter);
+app.use('/api/project', projectRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {

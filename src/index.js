@@ -19,7 +19,7 @@ function* postForm(action) {
 		// test trigger
 		console.log('postForm triggered');
 		// make axios call to database to POST form
-		yield call(axios.post, '/project', action.payload);
+		yield call(axios.post, '/api/project', action.payload);
 		// dispatch to fetch_projects to display updated DOM
 		yield dispatch({
 			type: 'FETCH_PROJECTS'
@@ -34,7 +34,7 @@ function* fetchProjects() {
 		// test trigger
 		console.log('fetchProjects triggered');
 		// make axios call to database to GET projects
-		const projectRes = yield call(axios.get, '/project');
+		const projectRes = yield call(axios.get, '/api/project');
 		// dispatch to SET_PROJECTS
 		yield dispatch({
 			type: 'SET_PROJECTS',
@@ -50,7 +50,7 @@ function* deleteProjects(action) {
 		// test trigger
 		console.log('deleteProjects triggered');
 		// make axios call to DB to DELETE project
-		yield call(axios.delete, `/project/${action.payload}`);
+		yield call(axios.delete, `/api/project/${action.payload}`);
 		// dispatch to FETCH_PROJECTS
 		yield dispatch({
 			type: 'FETCH_PROJECTS'
