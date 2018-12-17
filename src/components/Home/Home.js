@@ -12,7 +12,7 @@ class Home extends Component {
     let projects = this.props.projects.map((project) => {
       return <div key={project.id}>
         <h2>{project.name}</h2>
-        <h3>{project.date_completed}</h3>
+        <h3>{project.to_char}</h3>
           <p>
             <img src={project.thumbnail} alt="project"></img>
           </p>
@@ -26,7 +26,7 @@ class Home extends Component {
     })
     return (
       <div>
-        <h1>Projects</h1>
+        <h1>Vang Xiong's Portfolio</h1>
         {projects}
       </div>
     );

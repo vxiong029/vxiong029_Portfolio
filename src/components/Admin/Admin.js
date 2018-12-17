@@ -18,6 +18,12 @@ class Admin extends Component {
       tags: 0
     }
   }
+  // loads all projects
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'FETCH_PROJECTS'
+    })
+  }
   // sweetalert confirmation
   submitHandle = (event) => {
     event.preventDefault();
@@ -68,23 +74,30 @@ class Admin extends Component {
     return (
       <div>
       <h1>New Project</h1>
-        <p>
-          {JSON.stringify(this.state)}
-        </p>
         <form onSubmit={this.submitHandle}>
           <input type="text" placeholder="Project Name" onChange={this.handleChange('name')}></input>
-          <input type="date" placeholder="Date" onChange={this.handleChange('date_completed')}></input>
-          <select name="tags" onChange={this.handleChange('tags')}>
-            <option value={1}>React</option>
-            <option value={2}>jQuery</option>
-            <option value={3}>Node</option>
-            <option value={4}>SQL</option>
-            <option value={5}>Redux</option>
-            <option value={6}>HTML</option>
-          </select>
-          <input type="text" placeholder="Thumbnail" onChange={this.handleChange('thumbnail')}></input>
-          <input type="text" placeholder="Github URL" onChange={this.handleChange('github')}></input>
-          <input type="text" placeholder="Website URL (optional)" onChange={this.handleChange('website')}></input>
+          <p>
+            <input type="date" placeholder="Date" onChange={this.handleChange('date_completed')}></input>
+          </p>
+          <p>
+            <select name="tags" onChange={this.handleChange('tags')}>
+              <option value={1}>React</option>
+              <option value={2}>jQuery</option>
+              <option value={3}>Node</option>
+              <option value={4}>SQL</option>
+              <option value={5}>Redux</option>
+              <option value={6}>HTML</option>
+            </select>
+          </p>
+          <p>
+            <input type="text" placeholder="Thumbnail" onChange={this.handleChange('thumbnail')}></input>
+          </p>
+          <p>
+            <input type="text" placeholder="Github URL" onChange={this.handleChange('github')}></input>
+          </p>
+          <p>
+            <input type="text" placeholder="Website URL (optional)" onChange={this.handleChange('website')}></input>
+          </p>
           <p>
             <textarea type="text" placeholder="Description" onChange={this.handleChange('description')}></textarea>
           </p>

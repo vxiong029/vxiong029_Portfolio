@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   console.log('get route hit');
   
-  const queryText = `SELECT to_char("projects".date_completed, 'MMYYYY'),
+  const queryText = `SELECT to_char("projects".date_completed, 'MM/YYYY'),
 					          "projects".id, "projects".name, "projects".description, 
                     "projects".thumbnail, "projects".website, "projects".github,  
                     "tags".category_name FROM "projects" LEFT OUTER JOIN "tags" ON 
