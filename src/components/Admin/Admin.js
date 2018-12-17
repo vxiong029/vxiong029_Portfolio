@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // Redux import
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 // Component imports
 import AdminList from './AdminList';
 // SweetAlert import
@@ -73,7 +73,7 @@ class Admin extends Component {
   render() {
     return (
       <div>
-      <h1>New Project</h1>
+        <h1>New Project</h1>
         <form onSubmit={this.submitHandle}>
           <input type="text" placeholder="Project Name" onChange={this.handleChange('name')}></input>
           <p>

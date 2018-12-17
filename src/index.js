@@ -13,7 +13,6 @@ import { takeEvery, put as dispatch, call } from 'redux-saga/effects';
 // Import Axios
 import axios from 'axios';
 
-
 // postForm POST saga function
 function* postForm(action) {
 	try{

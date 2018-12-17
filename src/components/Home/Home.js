@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class Home extends Component {
   // loads every time page refreshes
@@ -9,13 +9,14 @@ class Home extends Component {
     })
   }
   render() {
+    // map out projects from projects reducer
     let projects = this.props.projects.map((project) => {
       return <div key={project.id}>
         <h2>{project.name}</h2>
         <h3>{project.to_char}</h3>
-          <p>
-            <img src={project.thumbnail} alt="project"></img>
-          </p>
+        <p>
+          <img src={project.thumbnail} alt="project"></img>
+        </p>
         <p>
           {project.description}
         </p>

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class AdminList extends Component {
   handleDelete = (id) => {
+    // dispatches to rootSaga watcher with project.id
     this.props.dispatch({
       type: 'DELETE_PROJECTS',
       payload: id
     })
   }
   render() {
+    // map out list from projects reducert
     let projectList = this.props.projects.map((project) => {
       return <tr key={project.id}>
         <td>
@@ -39,6 +41,6 @@ class AdminList extends Component {
 
 const mapState = reduxState => ({
   projects: reduxState.projects
-}) 
+})
 
 export default connect(mapState)(AdminList);
