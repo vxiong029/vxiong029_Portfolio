@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+// Redux import
 import {connect} from 'react-redux';
+// Component imports
 import AdminList from './AdminList';
+// SweetAlert import
+import swal from '@sweetalert/with-react';
 
 class Admin extends Component {
   state = {
@@ -14,13 +18,41 @@ class Admin extends Component {
       tags: 0
     }
   }
-  // submit the form
+  // sweetalert confirmation
   submitHandle = (event) => {
     event.preventDefault();
     console.log('in submitHandle!', this.state.newProject);
+    swal({
+      title: "Confirmation",
+      icon: "warning",
+      text: "Submit this project?",
+      button: false,
+      content: (
+        <div>
+          <button onClick={this.confirm}>Confirm</button>
+          <button onClick={this.close}>Close</button>
+        </div>
+      )
+    })
+  }
+  // submit form 
+  confirm = () => {
+    swal({
+      title: "Confirmed",
+      icon: "success",
+      buttons: false,
+    })
     this.props.dispatch({
       type: 'POST_FORM',
       payload: this.state
+    })
+  }
+  // close confirmation
+  close = () => {
+    swal({
+      title: "Cancelled",
+      icon: "error",
+      buttons: false,
     })
   }
   // handleChange for form
@@ -32,17 +64,9 @@ class Admin extends Component {
       }
     })
   }
-  // handleChange for tag
-  // tagHandleChange = (event) => {
-  //   this.setState({ 
-  //     tags: event.target.value 
-  //   })
-  // }
-
-  // Renders the entire app on the DOM
   render() {
     return (
-      <div className="App">
+      <div>
       <h1>New Project</h1>
         <p>
           {JSON.stringify(this.state)}

@@ -20,7 +20,7 @@ class AdminList extends Component {
       </tr>
     })
     return (
-      <div className="App">
+      <div>
         <table>
           <thead>
             <tr>

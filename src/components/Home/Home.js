@@ -9,16 +9,32 @@ class Home extends Component {
     })
   }
   render() {
+    let projects = this.props.projects.map((project) => {
+      return <div key={project.id}>
+        <h2>{project.name}</h2>
+        <h3>{project.date_completed}</h3>
+          <p>
+            <img src={project.thumbnail} alt="project"></img>
+          </p>
+        <p>
+          {project.description}
+        </p>
+        <p>
+          <a href={project.github} target="blank">Github site</a> || <a href={project.website} target="blank">Website</a>
+        </p>
+      </div>
+    })
     return (
-      <div className="App">
-        {JSON.stringify(this.props.reduxState.projects)}
+      <div>
+        <h1>Projects</h1>
+        {projects}
       </div>
     );
   }
 }
 
 const mapState = reduxState => ({
-  reduxState
+  projects: reduxState.projects
 })
 
 export default connect(mapState)(Home);
